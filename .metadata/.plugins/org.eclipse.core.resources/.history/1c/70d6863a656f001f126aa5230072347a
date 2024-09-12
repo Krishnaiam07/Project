@@ -1,0 +1,25 @@
+package com.example.tronics.service;
+
+import java.math.BigDecimal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.tronics.model.Product;
+import com.example.tronics.repository.ProductRepository;
+
+@Service
+public class ProductService {
+
+	@Autowired
+	private ProductRepository productRepository;
+
+	public Product saveProduct(String name, BigDecimal price,int stock_quantity) {
+
+		Product product=new Product(name, price, stock_quantity);
+		
+		return productRepository.save(product);
+	}
+	
+	
+}

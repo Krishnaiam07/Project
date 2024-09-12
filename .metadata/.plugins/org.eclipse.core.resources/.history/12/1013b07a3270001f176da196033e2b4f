@@ -1,0 +1,53 @@
+package com.example.tronics.service;
+
+import java.util.Collection;
+import java.util.Collections;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class UserPrincipal implements UserDetails {
+
+    private final String username;
+    private final String password;
+
+    public UserPrincipal(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.emptyList(); // No roles are used
+    }
+
+    @Override
+    public String getPassword() {
+        return password; // Return the password
+    }
+
+    @Override
+    public String getUsername() {
+        return username; // Return the username
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true; // Always return true
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true; // Always return true
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true; // Always return true
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true; // Always return true
+    }
+}

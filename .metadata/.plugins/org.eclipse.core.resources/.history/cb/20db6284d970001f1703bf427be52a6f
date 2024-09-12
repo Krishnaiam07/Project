@@ -1,0 +1,50 @@
+-- Drop the existing app_user table if it exists
+DROP TABLE IF EXISTS app_user;
+
+-- Create the app_user table
+CREATE TABLE app_user (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Insert initial data into app_user table
+INSERT INTO app_user (username, password, role) 
+VALUES 
+    ('user1', '$2a$10$W2yV9uLjJLMxB.HLQb8vlOz1Hd4mj2oTl9a.KeBW4QFZgCrrs08fy', 'USER'),  -- Encoded password1
+    ('user2', '$2a$10$K1pWlzQmjEPZsR.CZsb5cuVBrZpY9mRz/jUP5oSX2nGuGBzAFZ2Ta', 'USER'),  -- Encoded password2
+    ('user3', '$2a$10$rjOY/B2k8.QHqZWX3gFoMOKSDOQKK/ZcyMczTPcOH/nN7O/84/zOS', 'USER'),  -- Encoded password3
+    ('user4', '$2a$10$YPIuz78r9FS0LON5G3R29e.gD0G6I/w3tYET6blMnLPeJvB0ZOSBO', 'USER'),  -- Encoded password4
+    ('user5', '$2a$10$HzOfPqzHGD3aM3uLhUHGhePRTkBQuzQEy.tgk8Ti.BMmZJeJNe6tW', 'USER'),  -- Encoded password5
+    ('user6', '$2a$10$U5OEil.pRA01P5sVZbPb/.ylCzEhBXuxN9DgZgtjH67A3VnY5PhSO', 'USER'),  -- Encoded password6
+    ('user7', '$2a$10$pSXPBGIX8qRy9Rb96Sb77ObQ8ZwP.TJ5Un9.J5pkvbyGRVImb62C2', 'USER'),  -- Encoded password7
+    ('user8', '$2a$10$x/05lHVJkL7ov2P8Q12MNeJXFd.L8p7vMWM7GR.VaGhnr0jZ3p1KS', 'USER'),  -- Encoded password8
+    ('user9', '$2a$10$VgPdSSePv.I/.9.VT5UTGeEpRvhYqPVwQ7TDNzH9gE/LzOxXCu04i', 'USER'),  -- Encoded password9
+    ('user10', '$2a$10$8o5N/f5cEGhPBkI6Yl6Vz.tL/veJ2zKdvBBo1bzS9kxje.gDj2pW6', 'USER'),  -- Encoded password10
+    ('admin1', '$2a$10$n9E9tLVOSRTohpCgWxC0auoJdwDqrERJ5Lwcd0RoHk7xYoWSPGvCe', 'ADMIN');  -- Encoded adminpassword
+
+
+-- Create the product table
+CREATE TABLE product (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(19, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+);
+
+-- Insert initial data into product table
+INSERT INTO product (name, price) VALUES
+    ('Laptop', 799.99),
+    ('Smartphone', 499.99),
+    ('Tablet', 299.99),
+    ('Headphones', 89.99),
+    ('Smartwatch', 149.99),
+    ('Camera', 599.99),
+    ('Keyboard', 49.99),
+    ('Mouse', 29.99),
+    ('Monitor', 199.99),
+    ('Printer', 129.99);

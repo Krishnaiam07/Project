@@ -1,0 +1,21 @@
+package com.example.tronics.service;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // Simulate fetching user from a database
+        // In practice, replace with actual database fetch logic
+        if ("validUsername".equals(username)) { // Replace with actual username check
+            return new UserPrincipal(username, "password"); // Create UserPrincipal without role
+        } else {
+            throw new UsernameNotFoundException("User not found");
+        }
+    }
+}

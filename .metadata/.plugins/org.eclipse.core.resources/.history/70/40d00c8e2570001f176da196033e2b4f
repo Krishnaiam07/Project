@@ -1,0 +1,23 @@
+package com.example.tronics.service;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+
+import com.example.tronics.model.User;
+import com.example.tronics.model.UserPrincipal;
+
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        // Return a dummy UserPrincipal for any username
+        // Ensure UserPrincipal is properly implemented to avoid NullPointerException
+        User dummyUser = new User();
+        dummyUser.setUsername(username);
+        dummyUser.setPassword(""); // Provide a default or empty password
+        dummyUser.setRole(""); // Provide a default or empty role
+        return new UserPrincipal(dummyUser);
+    }
+}

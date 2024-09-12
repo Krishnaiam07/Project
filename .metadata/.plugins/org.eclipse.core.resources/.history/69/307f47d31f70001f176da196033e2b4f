@@ -1,0 +1,61 @@
+package com.example.tronics.service;
+
+import java.util.Collection;
+import java.util.Collections;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.tronics.model.User;
+
+public class UserPrincipal implements UserDetails {
+
+    private final User user;
+    private final String role;  // Added role field
+
+    public UserPrincipal(User user) {
+        this.user = user;
+        this.role = user.getRole();  // Initialize role field
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Convert user role to GrantedAuthority for role-based access
+        return Collections.singleton(new SimpleGrantedAuthority(this.role));
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;  // Adjust if you have an 'enabled' field in User model
+    }
+}
