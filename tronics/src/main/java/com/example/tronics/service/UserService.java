@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.tronics.model.Users;
 import com.example.tronics.repository.UserRepo;
+
 @Service
 public class UserService {
 
@@ -16,7 +17,7 @@ public class UserService {
     private JWTService jwtService;
 
     @Autowired
-    AuthenticationManager authManager;	
+    private AuthenticationManager authManager;
 
     @Autowired
     private UserRepo repo;
@@ -30,9 +31,11 @@ public class UserService {
     }
 
     public String verify(Users user) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        Authentication authentication = authManager.authenticate(
+            new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+        );
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken();
+            return jwtService.generateToken(user.getUsername());
         } else {
             return "fail";
         }
