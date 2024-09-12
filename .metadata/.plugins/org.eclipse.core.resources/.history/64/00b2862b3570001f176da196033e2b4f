@@ -1,0 +1,46 @@
+package com.example.tronics.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.tronics.model.User;
+import com.example.tronics.repository.UserRepository;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12); // Define password encoder
+
+    public User createUser(String username, String password, String role) {
+        String encodedPassword = encoder.encode(password); // Encode the password
+        User user = new User(username, encodedPassword, role); // Save encoded password
+        return userRepository.save(user);
+    }
+
+    public String verify(User user) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
+
+            if (authentication.isAuthenticated()) {
+                return "success";
+            }
+        } catch (AuthenticationException e) {
+            return "Invalid credentials"; // Better error message
+        }
+
+        return "fail"; // Return fail if not authenticated
+    }
+}

@@ -1,0 +1,8 @@
+CREATE TABLE users (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(50) NOT NULL
+);
+INSERT INTO users (username, password, role, created_at, updated_at) 
+VALUES ('user1', 'password1', 'USER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
