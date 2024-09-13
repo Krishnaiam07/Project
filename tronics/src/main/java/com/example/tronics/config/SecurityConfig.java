@@ -27,18 +27,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")).disable()) // Disable CSRF for H2 console
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")) // Disable CSRF for H2 console
+                        .disable()) // Disable CSRF for simplicity
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll() // Allow H2 console access
                         .requestMatchers("/login").permitAll() // Allow login endpoint access
-                        .anyRequest().authenticated()) // Require authentication for all other requests
-                .headers(headers -> headers.frameOptions().disable()) // Allow frames for H2 console
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session management
+                        .anyRequest().permitAll()) // Allow all other API endpoints
+                .headers(headers -> headers
+                        .frameOptions().disable()) // Allow frames for H2 console
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless session management
                 .build();
     }
 
-    
-    
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
