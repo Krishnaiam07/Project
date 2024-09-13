@@ -8,6 +8,7 @@ Prerequisites
 JDK 17 or later
 Spring Boot STS (Spring Tool Suite) or any IDE that supports Spring Boot
 Maven
+Deployed on Tomcat Server
 Setup Instructions
 1. Clone the Repository
 Clone the repository to your local machine:
