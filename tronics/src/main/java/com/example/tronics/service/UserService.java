@@ -25,19 +25,22 @@ public class UserService {
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public Users register(Users user) {
+        // Encode the password before saving it
         user.setPassword(encoder.encode(user.getPassword()));
-        repo.save(user);
-        return user;
+        return repo.save(user);
     }
 
     public String verify(Users user) {
-        Authentication authentication = authManager.authenticate(
-            new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
-        );
-        if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getUsername());
-        } else {
+        try {
+            Authentication authentication = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
+            if (authentication.isAuthenticated()) {
+                return jwtService.generateToken(user.getUsername());
+            }
+        } catch (Exception e) {
             return "fail";
         }
+        return "fail";
     }
 }

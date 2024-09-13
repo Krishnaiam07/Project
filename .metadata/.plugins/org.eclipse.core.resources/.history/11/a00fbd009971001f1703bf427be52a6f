@@ -1,0 +1,53 @@
+package com.example.tronics.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.tronics.model.Users;
+import com.example.tronics.repository.UserRepo;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private JWTService jwtService;
+
+    @Autowired
+    private AuthenticationManager authManager;
+
+    @Autowired
+    private UserRepo repo;
+
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+
+    public Users register(Users user) {
+        // Encode the password before saving it
+        user.setPassword(encoder.encode(user.getPassword()));
+        return repo.save(user);
+    }
+
+    public String verify(Users user) {
+        try {
+            Authentication authentication = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+            );
+            if (authentication.isAuthenticated()) {
+                return jwtService.generateToken(user.getUsername());
+            }
+        } catch (BadCredentialsException e) {
+            // Log or handle the exception for invalid credentials
+            // e.g., log.error("Invalid credentials for user: " + user.getUsername(), e);
+            return "Invalid credentials";
+        } catch (Exception e) {
+            // Log or handle other exceptions
+            // e.g., log.error("Authentication failed for user: " + user.getUsername(), e);
+            return "Authentication failed";
+        }
+        return "fail";
+    }
+}

@@ -44,3 +44,22 @@ INSERT INTO product (name, price) VALUES
     ('Mouse', 29.99),
     ('Monitor', 199.99),
     ('Printer', 129.99);
+-- Create the cart table
+CREATE TABLE cart (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL
+);
+
+-- Create the orders table
+CREATE TABLE orders (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    total_amount DECIMAL(19, 2) NOT NULL,
+    status VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+);
+
+-- No need to create the order_items table separately, as it's used as a class representation. Instead, you can store order items in a different way if required, or use an existing table like `order_items` to hold such data.
+    
