@@ -1474,3 +1474,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact io.jsonwebtok
 2024-09-13 14:49:02,182 [Worker-197: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\hp\task\tronics\src\test\resources
 2024-09-13 14:49:10,550 [Worker-204: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-09-13 14:49:10,557 [Worker-204: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-09-13 14:49:10,561 [Worker-204: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\hp\task\tronics\src\test\resources
