@@ -1,0 +1,5 @@
+package com.example.tronics.controller;
+
+public class InventoryController {
+
+}

@@ -1,0 +1,56 @@
+package com.example.tronics.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.tronics.model.Inventory;
+import com.example.tronics.repository.InventoryRepo;
+
+@Service
+public class InventoryService {
+
+    @Autowired
+    private InventoryRepo inventoryRepository;
+
+    public Inventory createInventory(Inventory inventory) {
+        return inventoryRepository.save(inventory);
+    }
+
+    public Inventory getInventory(Long id) {
+        return inventoryRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Inventory not found"));
+    }
+
+    public Inventory updateInventory(Long id, Inventory inventory) {
+        if (inventoryRepository.existsById(id)) {
+            inventory.setId(id);
+            return inventoryRepository.save(inventory);
+        }
+        throw new RuntimeException("Inventory not found");
+    }
+
+    public void deleteInventory(Long id) {
+        if (inventoryRepository.existsById(id)) {
+            inventoryRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Inventory not found");
+        }
+    }
+
+    public void updateStock(Long productId, int quantity) throws Exception {
+        Inventory inventory = inventoryRepository.findByProductId(productId)
+            .orElseThrow(() -> new Exception("Product not found in inventory"));
+
+        int newQuantity = inventory.getStockQuantity() - quantity;
+        if (newQuantity < 0) {
+            throw new Exception("Insufficient stock");
+        }
+        inventory.setStockQuantity(newQuantity);
+        inventoryRepository.save(inventory);
+    }
+
+    public Inventory getInventoryByProductId(Long productId) {
+        return inventoryRepository.findByProductId(productId)
+            .orElseThrow(() -> new RuntimeException("Product not found in inventory"));
+    }
+}

@@ -10862,3 +10862,105 @@ org.eclipse.jface.text.BadLocationException
 	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
 	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
 	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-09-12 22:11:39.903
+!MESSAGE The POM for io.jsonwebtoken:jjwt-api:jar:0.9.1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-09-12 22:11:39.921
+!MESSAGE The POM for io.jsonwebtoken:jjwt-impl:jar:0.9.1 is missing, no dependency information available
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2024-09-12 22:11:39.937
+!MESSAGE The POM for io.jsonwebtoken:jjwt-jackson:jar:0.9.1 is missing, no dependency information available
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-12 22:11:40.748
+!MESSAGE Classpath changed for project: tronics
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-09-12 22:11:42.437
+!MESSAGE Could not download sources for io.jsonwebtoken:jjwt-api:0.9.1
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact io.jsonwebtoken:jjwt-api:jar:sources:0.9.1
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$6(MavenImpl.java:584)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:228)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:553)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:538)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:282)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:294)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing io.jsonwebtoken:jjwt-api:jar:sources:0.9.1
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-09-12 22:11:42.438
+!MESSAGE Could not resolve artifact io.jsonwebtoken:jjwt-api:jar:sources:0.9.1
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-09-12 22:11:42.439
+!MESSAGE Missing io.jsonwebtoken:jjwt-api:jar:sources:0.9.1
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-09-12 22:11:43.204
+!MESSAGE Could not download sources for io.jsonwebtoken:jjwt-impl:0.9.1
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact io.jsonwebtoken:jjwt-impl:jar:sources:0.9.1
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$6(MavenImpl.java:584)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:228)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:553)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:538)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:282)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:294)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing io.jsonwebtoken:jjwt-impl:jar:sources:0.9.1
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-09-12 22:11:43.204
+!MESSAGE Could not resolve artifact io.jsonwebtoken:jjwt-impl:jar:sources:0.9.1
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-09-12 22:11:43.204
+!MESSAGE Missing io.jsonwebtoken:jjwt-impl:jar:sources:0.9.1
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-09-12 22:11:43.833
+!MESSAGE Could not download sources for io.jsonwebtoken:jjwt-jackson:0.9.1
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not resolve artifact io.jsonwebtoken:jjwt-jackson:jar:sources:0.9.1
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.lambda$6(MavenImpl.java:584)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:228)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:553)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.resolve(MavenImpl.java:538)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.download(DownloadSourcesJob.java:308)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadAttachments(DownloadSourcesJob.java:282)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadMaven(DownloadSourcesJob.java:252)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.downloadFilesAndPopulateToUpdate(DownloadSourcesJob.java:220)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.lambda$0(DownloadSourcesJob.java:149)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.embedder.IMaven.execute(IMaven.java:294)
+	at org.eclipse.m2e.jdt.internal.DownloadSourcesJob.run(DownloadSourcesJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Contains: Missing io.jsonwebtoken:jjwt-jackson:jar:sources:0.9.1
+!SUBENTRY 1 org.eclipse.m2e.core 4 -1 2024-09-12 22:11:43.833
+!MESSAGE Could not resolve artifact io.jsonwebtoken:jjwt-jackson:jar:sources:0.9.1
+!SUBENTRY 2 org.eclipse.m2e.core 4 0 2024-09-12 22:11:43.833
+!MESSAGE Missing io.jsonwebtoken:jjwt-jackson:jar:sources:0.9.1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-12 22:12:18.291
+!MESSAGE Classpath changed for project: tronics
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-12 22:12:18.373
+!MESSAGE Classpath changed for project: tronics
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-09-12 22:12:19.975
+!MESSAGE Classpath changed for project: tronics
