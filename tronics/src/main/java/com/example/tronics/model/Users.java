@@ -1,6 +1,8 @@
 package com.example.tronics.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,18 +10,20 @@ import jakarta.persistence.Table;
 @Table(name = "app_user")  // Ensure the entity maps to the correct table
 public class Users {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Ensure auto-increment
+    private Long id;
+
     private String username;
     private String password;
-    private String role; // Added role field
+    private String role;
 
     // Getters and Setters
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

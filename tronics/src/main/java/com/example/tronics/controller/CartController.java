@@ -5,14 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.tronics.model.Cart;
 import com.example.tronics.service.CartService;
@@ -25,8 +18,12 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping
-    public Cart addItemToCart(@RequestBody Cart cart) {
-        return cartService.addItemToCart(cart);
+    public ResponseEntity<String> addItemToCart(@RequestBody Cart cart) {
+        String result = cartService.addItemToCart(cart);
+        if (result.equals("Product not found")) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/{id}")
@@ -36,9 +33,12 @@ public class CartController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cart> updateCartItem(@PathVariable Long id, @RequestBody Cart cart) {
-        Cart updatedCart = cartService.updateCartItem(id, cart);
-        return updatedCart != null ? ResponseEntity.ok(updatedCart) : ResponseEntity.notFound().build();
+    public ResponseEntity<String> updateCartItem(@PathVariable Long id, @RequestBody Cart cart) {
+        String result = cartService.updateCartItem(id, cart);
+        if (result.equals("Product not found") || result.equals("Cart item not found")) {
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @DeleteMapping("/{id}")
